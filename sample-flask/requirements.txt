@@ -1,0 +1,2 @@
+Flask==1.1.1
+flask_lambda_python36==0.1.0

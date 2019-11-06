@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: flask-lambda-python36
+Version: 0.1.0
+Summary: Python3.6+ module to make Flask compatible with AWS Lambda
+Home-page: https://github.com/techjacker/flask-lambda
+Author: Andrew Griffiths
+Author-email: mail@andrewgriffithsonline.com
+License: Apache License, Version 2.0
+Keywords: flask aws amazon lambda
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python
+Classifier: Environment :: Console
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Dist: Flask (>=0.10)
+
+flask-lambda-python3.6
+============
+
+**Python 3.6+**
+
+For older versions of python use the [original flask-lambda library](https://github.com/sivel/flask-lambda) which this code is adapted from.
+
+See [this example flask project](https://github.com/techjacker/flask-lambda-example) for how to use and deploy a flask app using this library.
+
+
+Installation
+------------
+
+pip install flask-lambda-python36
+
+
+Usage
+-----
+
+    from flask_lambda import FlaskLambda
+
+    app = FlaskLambda(__name__)
+
+
+    @app.route('/foo', methods=['GET', 'POST'])
+    def foo():
+        data = {
+            'form': request.form.copy(),
+            'args': request.args.copy(),
+            'json': request.json
+        }
+        return (
+            json.dumps(data, indent=4, sort_keys=True),
+            200,
+            {'Content-Type': 'application/json'}
+        )
+
+
+    if __name__ == '__main__':
+        app.run(debug=True)
+
+
+
