@@ -7,7 +7,7 @@ variable "myregion" {
 }
 
 variable "accountId" {
-  default = "291660391595"
+  default = ""
 }
 
 variable "function_name" {
